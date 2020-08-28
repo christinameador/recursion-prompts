@@ -30,6 +30,14 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+    if(n===1){
+        return false;
+      } else if(n===0){
+        return true;
+      } else if(n<0){
+        n = -n;
+      }
+      return isEven(n-2);
 };
 
 // 5. Sum all integers below a given integer.
