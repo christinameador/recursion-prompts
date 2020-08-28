@@ -15,20 +15,20 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
-    if(array.length === 0){
+    if(array.length === 0) {
         return 0;
-      }
-      let copy_arr = array.slice();
-      let new_arr = copy_arr.splice(1);
-      return array[0] + sum(new_arr);
+    }
+    let copy_arr = array.slice();
+    let new_arr = copy_arr.splice(1);
+    return array[0] + sum(new_arr);
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
     let total = 0
-    for (var i=0; i<array.length; i++){
-        if (Array.isArray(array[i])){
+    for (var i=0; i<array.length; i++) {
+        if (Array.isArray(array[i])) {
             total+=arraySum(array[i])
         } else {
             total+=array[i]
@@ -39,22 +39,22 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-    if(n===1){
+    if (n===1) {
         return false;
-      } else if(n===0){
+    } else if (n===0) {
         return true;
-      } else if(n<0){
+    } else if (n<0) {
         n = -n;
-      }
-      return isEven(n-2);
+    }
+    return isEven(n-2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-    if(n===0) return 0;
-    if(n>0){
+    if (n===0) return 0;
+    if (n>0) {
       return sumBelow(n-1) + n-1;
     } else {
       return sumBelow(n+1) + n+1;
@@ -84,6 +84,22 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+    if (exp < 0){
+        if (exp === -1) {
+            return 1 / base;
+        }
+        return exponent(base, exp+1)/ base
+    }
+    if (exp === 1 || exp === 0) {
+        if (exp === 1) {
+           return base
+        }
+       if (exp === 0) {
+           return 1
+        }          
+   
+    }
+    return base*exponent(base, exp-1)
 };
 
 // 8. Determine if a number is a power of two.
